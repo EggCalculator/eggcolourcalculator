@@ -72,94 +72,96 @@
 </head>
 <body>
 
-<div class="container">
-    <h2>Egg Colour Calculator</h2>
-    <div class="subtitle">ww = White Shell Gene |  WW/Ww = Blue Shell Gene | BB/Bb = Tan/Brown Topcoat (Bb = Green, BB = Olive)</div>
-    
-    <p class="site-description">
-        Punnett Square Calculator that will calculate all possible chicken egg colours based on parental genotypes. Will generate a 2x2, 4x4 or 8x8 Punnett Square, visual egg colour map and probabilities.
-    </p>
-
-    <details>
-        <summary>How to Use & Genotype Examples (Click to Expand)</summary>
-        <div class="tutorial-content">
-            <p>Type the gene letter combinations for both parents into the input fields below. Depending on how many traits you want to track, you can enter 2, 4, or 6 letters to map different grid scales:</p>
-            
-            <h4>1. Single Trait Example (Monohybrid Cross 2x2)</h4>
-            <p>Tracks just one gene group (e.g., shell base color Blue <strong>Ww x Ww</strong> ; <strong>Parent 1: Ww  &  Parent 2: Ww</strong>). Generates 4 unique outcomes.</p>
-            <div class="mini-grid-wrap">
-                <table>
-                    <tr><th></th><th>W</th><th>w</th></tr>
-                    <tr><th>W</th><td>WW (Blue)</td><td>Ww (Blue)</td></tr>
-                    <tr><th>w</th><td>Ww (Blue)</td><td>ww (White)</td></tr>
-                </table>
-            </div>
-
-            <h4>2. Two Traits Example (Dihybrid Cross 4x4)</h4>
-            <p>Tracks shell base color and brown topcoat depth (e.g., Green <strong>WwBb × WwBb</strong>). Generates 16 calculation paths mapping blues, greens, olives, whites, tans, and deep browns.</p>
-            <div class="mini-grid-wrap">
-                <table>
-                    <tr><th></th><th>WB</th><th>Wb</th><th>wB</th><th>wb</th></tr>
-                    <tr><th>WB</th><td>WWBB (Olive)</td><td>WWBb (Green)</td><td>WwBB (Olive)</td><td>WwBb (Green)</td></tr>
-                    <tr><th>wb</th><td>WwBb (Green)</td><td>Wwbb (Blue)</td><td>wwBb (Tan)</td><td>wwbb (White)</td></tr>
-                </table>
-            </div>
-
-            <h4>3. Three Traits Modifier Example (Trihybrid Cross 8x8)</h4>
-            <p>Tracks shell base colour (White (ww) or Blue (WW/Ww)), brown topcoat (Brown (BB) or Tan (Bb)) , plus an optional third density modifier gene (CC/Cc) (e.g., <strong>WwBbCc × WwBbCc</strong>). Generates 64 matrix calculations for ultra-precise shade probabilitys.</p>
-        </div>
-    </details>
-
-    <details>
-        <summary>What genotype is my chicken? (Breed Selection Helper)</summary>
-        <div class="breed-helper-ui">
-            <div>
-                <label>Matrix Scale</label>
-                <select id="scale-selector" onchange="updateBreedHelperValues()">
-                    <option value="2x2">2x2 (Single Trait)</option>
-                    <option value="4x4" selected>4x4 (Two Traits)</option>
-                    <option value="8x8">8x8 (Three Traits)</option>
-                </select>
-            </div>
-            <div>
-                <label>Parent 1 Breed Match</label>
-                <input type="text" id="p1-search" class="search-input" placeholder=" Search Parent 1 Breed..." onkeyup="filterDropdown('p1')">
-                <select id="p1-breed-select" onchange="applyBreedSelection('p1')">
-                    <option value="" disabled selected>-- Select Parent 1 Breed --</option>
-                </select>
-            </div>
-            <div>
-                <label>Parent 2 Breed Match</label>
-                <input type="text" id="p2-search" class="search-input" placeholder=" Search Parent 2 Breed..." onkeyup="filterDropdown('p2')">
-                <select id="p2-breed-select" onchange="applyBreedSelection('p2')">
-                    <option value="" disabled selected>-- Select Parent 2 Breed --</option>
-                </select>
-            </div>
-        </div>
-    </details>
-    
-    <div class="inputs">
-        <div>
-            <label>Parent 1 Genotype</label>
-            <input type="text" id="p1" value="WwBb" placeholder="e.g. WwBb">
-        </div>
-        <div>
-            <label>Parent 2 Genotype</label>
-            <input type="text" id="p2" value="WwBb" placeholder="e.g. WwBb">
-        </div>
-        <button style="grid-column: span 2;" onclick="calculate()">Hatch Visual Probabilities</button>
-    </div>
-
-    <div class="scroll-wrapper" id="square-output"></div>
-
-    <div id="results-area">
-        <h3 style="text-align: center; color: #f0e68c; font-size: 1.1em; margin-bottom: 5px;">Egg Colour Map</h3>
-        <div class="egg-visual-grid" id="egg-grid"></div>
+<main>
+    <div class="container">
+        <h2>Egg Colour Calculator</h2>
+        <div class="subtitle">ww = White Shell Gene |  WW/Ww = Blue Shell Gene | BB/Bb = Tan/Brown Topcoat (Bb = Green, BB = Olive)</div>
         
-        <h3 style="color: #f0e68c; font-size: 1.1em; margin-bottom: 10px;"> Statistics</h3>
-        <div class="results-list" id="stat-list"></div>
+        <p class="site-description">
+            Punnett Square Calculator that will calculate all possible chicken egg colours based on parental genotypes. Will generate a 2x2, 4x4 or 8x8 Punnett Square, visual egg colour map and probabilities.
+        </p>
+
+        <details>
+            <summary>How to Use & Genotype Examples (Click to Expand)</summary>
+            <div class="tutorial-content">
+                <p>Type the gene letter combinations for both parents into the input fields below. Depending on how many traits you want to track, you can enter 2, 4, or 6 letters to map different grid scales:</p>
+                
+                <h4>1. Single Trait Example (Monohybrid Cross 2x2)</h4>
+                <p>Tracks just one gene group (e.g., shell base color Blue <strong>Ww x Ww</strong> ; <strong>Parent 1: Ww  &amp;  Parent 2: Ww</strong>). Generates 4 unique outcomes.</p>
+                <div class="mini-grid-wrap">
+                    <table>
+                        <tr><th></th><th>W</th><th>w</th></tr>
+                        <tr><th>W</th><td>WW (Blue)</td><td>Ww (Blue)</td></tr>
+                        <tr><th>w</th><td>Ww (Blue)</td><td>ww (White)</td></tr>
+                    </table>
+                </div>
+
+                <h4>2. Two Traits Example (Dihybrid Cross 4x4)</h4>
+                <p>Tracks shell base color and brown topcoat depth (e.g., Green <strong>WwBb × WwBb</strong>). Generates 16 calculation paths mapping blues, greens, olives, whites, tans, and deep browns.</p>
+                <div class="mini-grid-wrap">
+                    <table>
+                        <tr><th></th><th>WB</th><th>Wb</th><th>wB</th><th>wb</th></tr>
+                        <tr><th>WB</th><td>WWBB (Olive)</td><td>WWBb (Green)</td><td>WwBB (Olive)</td><td>WwBb (Green)</td></tr>
+                        <tr><th>wb</th><td>WwBb (Green)</td><td>Wwbb (Blue)</td><td>wwBb (Tan)</td><td>wwbb (White)</td></tr>
+                    </table>
+                </div>
+
+                <h4>3. Three Traits Modifier Example (Trihybrid Cross 8x8)</h4>
+                <p>Tracks shell base colour (White (ww) or Blue (WW/Ww)), brown topcoat (Brown (BB) or Tan (Bb)) , plus an optional third density modifier gene (CC/Cc) (e.g., <strong>WwBbCc × WwBbCc</strong>). Generates 64 matrix calculations for ultra-precise shade probabilitys.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>What genotype is my chicken? (Breed Selection Helper)</summary>
+            <div class="breed-helper-ui">
+                <div>
+                    <label>Matrix Scale</label>
+                    <select id="scale-selector" onchange="updateBreedHelperValues()">
+                        <option value="2x2">2x2 (Single Trait)</option>
+                        <option value="4x4" selected>4x4 (Two Traits)</option>
+                        <option value="8x8">8x8 (Three Traits)</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Parent 1 Breed Match</label>
+                    <input type="text" id="p1-search" class="search-input" placeholder=" Search Parent 1 Breed..." onkeyup="filterDropdown('p1')">
+                    <select id="p1-breed-select" onchange="applyBreedSelection('p1')">
+                        <option value="" disabled selected>-- Select Parent 1 Breed --</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Parent 2 Breed Match</label>
+                    <input type="text" id="p2-search" class="search-input" placeholder=" Search Parent 2 Breed..." onkeyup="filterDropdown('p2')">
+                    <select id="p2-breed-select" onchange="applyBreedSelection('p2')">
+                        <option value="" disabled selected>-- Select Parent 2 Breed --</option>
+                    </select>
+                </div>
+            </div>
+        </details>
+        
+        <div class="inputs">
+            <div>
+                <label>Parent 1 Genotype</label>
+                <input type="text" id="p1" value="WwBb" placeholder="e.g. WwBb">
+            </div>
+            <div>
+                <label>Parent 2 Genotype</label>
+                <input type="text" id="p2" value="WwBb" placeholder="e.g. WwBb">
+            </div>
+            <button style="grid-column: span 2;" onclick="calculate()">Hatch Visual Probabilities</button>
+        </div>
+
+        <div class="scroll-wrapper" id="square-output"></div>
+
+        <div id="results-area">
+            <h3 style="text-align: center; color: #f0e68c; font-size: 1.1em; margin-bottom: 5px;">Egg Colour Map</h3>
+            <div class="egg-visual-grid" id="egg-grid"></div>
+            
+            <h3 style="color: #f0e68c; font-size: 1.1em; margin-bottom: 10px;"> Statistics</h3>
+            <div class="results-list" id="stat-list"></div>
+        </div>
     </div>
-</div>
+</main>
 
 <script>
     const COLORS = {
