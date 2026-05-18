@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jajacinta.github.io/eggcolourcalculator/sitemap.xml
+Sitemap: https://eggcalculator.github.io/eggcolourcalculator/sitemap.xml
