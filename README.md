@@ -3,7 +3,7 @@
 Punnett Square Calculator that will predict the possible chicken egg colours based on parental genotypes.
 
 ## Website
-You can use the calculator live here: [https://jajacinta.github.io/eggcolourcalculator](https://jajacinta.github.io/eggcolourcalculator/)
+You can use the calculator live here :[https://EggCalculator.github.io/eggcolourcalculator](https://github.com/EggCalculator/eggcolourcalculator)
 
 ## How It Works
 The calculator works based on two primary genetic traits:
